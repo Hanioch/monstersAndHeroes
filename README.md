@@ -1,15 +1,16 @@
 # monstersAndHeroes
 
-Rôle Heros :
+Rôles Heros :
 
-- Guerrier ( Armure)
+- Guerrier (Armure)
 - Archer (Vitesse d'attaque)
-- Magicien (magie)
-- épéiste (attaque)
+- Magicien (Magie)
+- Épéiste (Attaque)
 
-Rôle Monstre :
+Rôles Monstres :
 
-- ( Armure)
-- (Vitesse d'attaque)
-- (magie)
-- (attaque)
+- Guerrier (Armure)
+- Archer (Vitesse d'attaque)
+- Magicien (Magie)
+- Épéiste (Attaque)
+
