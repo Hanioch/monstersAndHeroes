@@ -13,4 +13,3 @@ Rôles Monstres :
 - Archer (Vitesse d'attaque)
 - Magicien (Magie)
 - Épéiste (Attaque)
-
