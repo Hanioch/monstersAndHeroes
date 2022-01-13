@@ -2,9 +2,9 @@ import Personnage from "./Personnage.js";
 
 class Archer extends Personnage {
 
-    constructor(name, hp, mana, armor, armorSpell, atk, atkSpell, lvl)
+    constructor(name, role = 'Archer', hp, mana, armor, armorSpell, atk, atkSpell, lvl)
     {
-        super(name, hp, mana, armor, armorSpell, atk, atkSpell, lvl)
+        super(name, role, hp, mana, armor, armorSpell, atk, atkSpell, lvl)
     }
     
 }
