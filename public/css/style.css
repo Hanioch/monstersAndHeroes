@@ -1,0 +1,24 @@
+#heroes {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.hero-card {
+    width: 25%;
+    border: 1px solid black;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-card img {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 100%;
+}
+
+.hero-card .hero-name {
+    text-align: center;
+    text-transform: uppercase;
+}
