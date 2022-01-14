@@ -1,47 +1,80 @@
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    margin: 0;
+  margin: 0;
+  width: 100vw;
+  overflow-x: hidden;
 }
 
 header {
-    width: 100vw;
-    height: 250px;
-    background-image: url('../img/banner-logo.jpg');
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-color: black;
-    position: relative;
+  width: 100vw;
+  height: 250px;
+  background-image: url("../img/banner-logo.jpg");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: black;
+  position: relative;
 }
 
 section:first-of-type {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
-#heroes {
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
+#heroes,
+#monsters {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
 }
 
-.hero-card {
-    width: 25%;
-    border: 1px solid black;
-    position: relative;
-    overflow: hidden;
+.hero-card,
+.monster-card {
+  width: 25%;
+  border: 1px solid black;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
 }
 
-.hero-card img {
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    max-width: 100%;
+.hero-card img,
+.monster-card img {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 100%;
 }
 
-.hero-card .hero-name {
-    text-align: center;
-    text-transform: uppercase;
+.hero-card .hero-name,
+.monster-card .monster-name {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.inactive::after,
+.inactive-monster::after {
+  content: "";
+  top: 0;
+  width: 100%;
+  border: 1px solid black;
+  position: absolute;
+  overflow: hidden;
+  opacity: 0.5;
+  background-color: gray;
+  height: 100%;
+  transition: 0.5s;
+}
+
+.inactive:hover::after {
+  opacity: 0;
+}
+
+.monster-card {
+  cursor: default;
+}
+
+.bouton {
+  margin-top: 20px;
 }
