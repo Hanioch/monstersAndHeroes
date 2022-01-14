@@ -1,3 +1,26 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+header {
+    width: 100vw;
+    height: 250px;
+    background-image: url('../img/banner-logo.jpg');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: black;
+    position: relative;
+}
+
+section:first-of-type {
+    margin-top: 20px;
+}
+
 #heroes {
     display: flex;
     flex-direction: row;
