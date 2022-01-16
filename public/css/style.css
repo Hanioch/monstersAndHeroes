@@ -31,7 +31,8 @@ section:first-of-type {
 }
 
 .hero-card,
-.monster-card {
+.monster-card,
+.in-game-card {
   width: 25%;
   border: 1px solid black;
   position: relative;
@@ -40,7 +41,8 @@ section:first-of-type {
 }
 
 .hero-card img,
-.monster-card img {
+.monster-card img,
+.in-game-card img {
   position: relative;
   left: 50%;
   transform: translateX(-50%);
@@ -48,12 +50,13 @@ section:first-of-type {
 }
 
 .hero-card .hero-name,
-.monster-card .monster-name {
+.monster-card .monster-name,
+.in-game-card .in-game-name {
   text-align: center;
   text-transform: uppercase;
 }
 
-.inactive::after,
+.inactive-hero::after,
 .inactive-monster::after {
   content: "";
   top: 0;
@@ -67,7 +70,7 @@ section:first-of-type {
   transition: 0.5s;
 }
 
-.inactive:hover::after {
+.inactive-hero:hover::after {
   opacity: 0;
 }
 
@@ -77,4 +80,15 @@ section:first-of-type {
 
 .bouton {
   margin-top: 20px;
+  width: 70px;
+  align-self: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.invisible {
+  display: none;
 }

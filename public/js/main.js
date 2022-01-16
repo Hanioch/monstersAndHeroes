@@ -6,6 +6,9 @@ import Warrior from "./class/Warrior.js";
 import Assasin from "./class/Assasin.js";
 import Monster from "./class/Monster.js";
 import SubmitHero from "./class/SubmitHero.js";
+import Game from "./class/Game.js";
+import StyleCard from "./class/StyleCards.js";
+const styleCard = new StyleCard();
 
 // Default personnage test.
 let oli = new Personnage("Oli");
@@ -32,43 +35,15 @@ let heroes = [hanzo, muradin, orphea, zeratul];
 const monsters = [monster1, monster2, monster3, monster4];
 
 // Variable to insert into HTML.
-let html = "";
+let htmlHeroes = "";
 let htmlMonster = "";
 
 for (const hero of heroes) {
-  console.log(hero);
-  const { name, role, hp, mana, atk, atkSpell, armor, armorSpell, lvl } = hero;
-
-  html += `<div class="hero-card inactive" id='${name}' >`;
-  html += `<img src="./public/img/${name.toLowerCase()}.jpg" alt="${name} portrait">`;
-  html += `<div class="hero-name">${name}</div>`;
-  html += `<div class="hero-role">${role}</div>`;
-  html += `<div class="hero-hp">hp : ${hp}</div>`;
-  html += `<div class="hero-mana">mana : ${mana}</div>`;
-  html += `<div class="hero-atk">attack : ${atk}</div>`;
-  html += `<div class="hero-atk">attack spell : ${atkSpell}</div>`;
-  html += `<div class="hero-armor">armor : ${armor}</div>`;
-  html += `<div class="hero-armor">armor Spell : ${armorSpell}</div>`;
-  html += `<div class="hero-armor">level : ${lvl}</div>`;
-  html += `</div>`;
+  htmlHeroes += styleCard.createCard(hero, "hero");
 }
 
 for (const monster of monsters) {
-  const { name, role, hp, mana, atk, atkSpell, armor, armorSpell, lvl } =
-    monster;
-
-  htmlMonster += `<div class="monster-card inactive-monster" id="${monster.name}">`;
-  htmlMonster += `<img src="./public/img/${role.toLowerCase()}.jpg" alt="${name} portrait">`;
-  htmlMonster += `<div class="monster-name">${name}</div>`;
-  htmlMonster += `<div class="hero-role">${role}</div>`;
-  htmlMonster += `<div class="hero-hp">hp : ${hp}</div>`;
-  htmlMonster += `<div class="hero-mana">mana : ${mana}</div>`;
-  htmlMonster += `<div class="hero-atk">attack : ${atk}</div>`;
-  htmlMonster += `<div class="hero-atk">attack spell : ${atkSpell}</div>`;
-  htmlMonster += `<div class="hero-armor">armor : ${armor}</div>`;
-  htmlMonster += `<div class="hero-armor">armor Spell : ${armorSpell}</div>`;
-  htmlMonster += `<div class="hero-armor">level : ${lvl}</div>`;
-  htmlMonster += `</div>`;
+  htmlMonster += styleCard.createCard(monster, "monster");
 }
 
 // Select Element.
@@ -76,22 +51,26 @@ const heroesElem = document.querySelector("#heroes");
 const monsterElem = document.querySelector("#monsters");
 
 // Insert heroes cards into HTML element.
-heroesElem.innerHTML = html;
+heroesElem.innerHTML = htmlHeroes;
 monsterElem.innerHTML = htmlMonster;
 
 // addEvent SElect HEro / submit Hero
 const submitHero = new SubmitHero();
+const game = new Game();
 
 const buttonChoice = document.querySelector("#buttonChoice");
 let listHeroes = document.querySelectorAll(".hero-card");
 
 listHeroes.forEach((elem) => {
   elem.addEventListener("click", () => {
-    submitHero.selectHero(heroes, elem.id);
-    buttonChoice.removeAttribute("disabled");
+    if (!submitHero.isLoading) {
+      submitHero.selectHero(heroes, elem.id);
+      buttonChoice.removeAttribute("disabled");
+    }
   });
 });
 
 buttonChoice.addEventListener("click", () => {
+  buttonChoice.setAttribute("disabled", true);
   submitHero.selectRandomMonster(monsters);
 });
