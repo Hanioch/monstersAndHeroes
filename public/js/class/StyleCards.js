@@ -1,3 +1,4 @@
+import Game from "./Game.js";
 class StyleCard {
   createCard = (character, type) => {
     const { name, role, hp, mana, atk, atkSpell, armor, armorSpell, lvl } =
@@ -18,6 +19,49 @@ class StyleCard {
     html += `</div>`;
 
     return html;
+  };
+
+  createCardForFight = (character, type, enemy) => {
+    const game = new Game();
+
+    const elem = this.createCard(character, "in-game");
+    const divElem = document.createElement("div");
+    const titleHp = document.createElement("h3");
+    const hpValue = document.createElement("span");
+    const divBtn = document.createElement("div");
+    const btnAtk = document.createElement("button");
+    const btnAtkSpe = document.createElement("button");
+
+    divBtn.classList.add("button-atq");
+    btnAtk.innerHTML = "Attack";
+    btnAtk.setAttribute("id", `button-atk-${type}`);
+    btnAtk.addEventListener("click", () => {
+      game.doAtk("atk", character, enemy);
+    });
+    btnAtkSpe.innerHTML = "Attack Spe";
+    btnAtkSpe.setAttribute("id", `button-atk-spe-${type}`);
+    btnAtkSpe.addEventListener("click", () => {
+      game.doAtk("atkSpe", character, enemy);
+    });
+
+    if (type === "monster") {
+      btnAtk.setAttribute("disabled", true);
+      btnAtkSpe.setAttribute("disabled", true);
+    }
+
+    hpValue.setAttribute("id", `hp-${type}`);
+
+    hpValue.innerHTML = character.hp;
+    titleHp.innerHTML = `HP : `;
+    titleHp.appendChild(hpValue);
+    divBtn.appendChild(btnAtk);
+    divBtn.appendChild(btnAtkSpe);
+
+    divElem.innerHTML = elem;
+    divElem.insertBefore(titleHp, divElem.firstChild);
+    divElem.appendChild(divBtn);
+
+    return divElem;
   };
 }
 

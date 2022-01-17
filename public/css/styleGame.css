@@ -1,5 +1,4 @@
 .game {
-  height: 70vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -8,8 +7,33 @@
 #characters {
   display: flex;
   justify-content: space-evenly;
+  width: 100%;
 }
 
 .in-game-card:hover {
   cursor: default;
+}
+
+.in-game-card {
+  width: 25vw;
+}
+
+.button-atq {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.finished {
+  font-size: 40px;
+  height: 20vh;
+  width: 40vw;
+  background-color: red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

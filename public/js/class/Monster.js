@@ -5,12 +5,12 @@ class Monster {
     this.levelHero = levelHero;
   }
 
-  monsterSkills = [50, 10, 1, 1, 1, 1];
+  monsterSkills = [50, 10, 3, 3, 6, 5];
   initialSkillPoint = 100;
   skillPoint = this.initialSkillPoint;
 
   generateMonster = (name) => {
-    this.monsterSkills = [50, 10, 1, 1, 1, 1];
+    this.monsterSkills = [50, 10, 3, 3, 6, 5];
     this.skillPoint = Math.floor(this.initialSkillPoint + this.levelHero * 1.2);
     this.generateStats();
 

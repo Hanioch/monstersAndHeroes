@@ -30,8 +30,8 @@
 }
 
 .to-visible {
-  -webkit-animation: to-visible 1s;
-  animation: to-visible 1s;
+  -webkit-animation: to-visible 0.9s;
+  animation: to-visible 0.9s;
 }
 
 @-webkit-keyframes to-visible {
