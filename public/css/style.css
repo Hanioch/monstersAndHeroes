@@ -54,11 +54,13 @@ section:first-of-type {
   text-transform: uppercase;
 }
 
-.hero-card.is-selected {
+.hero-card.is-selected,
+.monster-card.is-selected {
   position: relative;
 }
 
-.hero-card.is-selected::after {
+.hero-card.is-selected::after,
+.monster-card.is-selected::after {
   content: '';
   position: absolute;
   inset: 0;

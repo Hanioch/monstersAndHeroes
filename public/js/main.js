@@ -72,6 +72,7 @@ monstersElem.innerHTML = htmlMonsters
 const heroesCardsElem = document.querySelectorAll('#heroes .hero-card')
 const selectElem = document.querySelector('#buttonChoice')
 
+
 // For all Heroes Cards.
 for (const heroCard of heroesCardsElem) {
   // On Hero Card click.
@@ -90,5 +91,14 @@ for (const heroCard of heroesCardsElem) {
 
 
 selectElem.addEventListener('click', function(e) {
-  new Game()
+  // Disable Select button once game is started.
+  this.setAttribute('disabled', '')
+
+  // Start GAME.
+  const game = new Game()
+  // Select random monster.
+  game.monsterSelection()
+  // Get selected players.
+  const playersSelected = document.querySelectorAll('.is-selected')
+  console.log(playersSelected)
 })
