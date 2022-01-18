@@ -2,9 +2,14 @@ import Personnage from "./Personnage.js"
 
 class Assasin extends Personnage {
 
-    constructor(name, role = 'Assasin', hp, mana, armor, armorSpell, atk, atkSpell, lvl)
+    constructor(name)
     {
-        super(name, role, hp, mana, armor, armorSpell, atk, atkSpell, lvl)
+        super(name)
+        this.hp = this.hp * 1.25
+        this.role = 'Assasin'
+        this.atk = this.atk * 1.6
+        this.atkSpell = this.atkSpell * 1
+        this.armor = this.armor * 3
     }
 
 }

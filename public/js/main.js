@@ -1,76 +1,69 @@
 // Imports.
-import Personnage from "./class/Personnage.js";
-import Archer from "./class/Archer.js";
-import Magician from "./class/Magician.js";
-import Warrior from "./class/Warrior.js";
-import Assasin from "./class/Assasin.js";
-import Monster from "./class/Monster.js";
-import SubmitHero from "./class/SubmitHero.js";
-import Game from "./class/Game.js";
-import StyleCard from "./class/StyleCards.js";
-const styleCard = new StyleCard();
-
-// Default personnage test.
-let oli = new Personnage("Oli");
-console.log(oli);
-
-//Default Monster
-const levelHero = 1; // va etre changer par le niveau du hero selectioner (complement de l'amelioration 1)
-const monsterClasse = new Monster(levelHero);
+import Archer from "./class/Archer.js"
+import Assasin from "./class/Assasin.js"
+import Magician from "./class/Magician.js"
+import Warrior from "./class/Warrior.js"
+import Monstre from "./class/Monster.js"
 
 // Create heroes.
-let hanzo = new Archer("Hanzo", undefined, 100, 50, 2, 10, 7, 20, 1);
-let muradin = new Warrior("Muradin", undefined, 200, 50, 4, 15, 5, 10, 1);
-let orphea = new Magician("Orphea", undefined, 75, 100, 1, 5, 4, 35, 1);
-let zeratul = new Assasin("Zeratul", undefined, 100, 60, 3, 12, 10, 17, 1);
+const hanzo = new Archer("Hanzo")
+const muradin = new Warrior("Muradin")
+const orphea = new Magician("Orphea")
+const qhira = new Assasin("Qhira")
 
-//Create Monsters
-const monster1 = monsterClasse.generateMonster("Hades");
-const monster2 = monsterClasse.generateMonster("Julien");
-const monster3 = monsterClasse.generateMonster("Monstre3");
-const monster4 = monsterClasse.generateMonster("Méchant");
+// Create monsters.
+const garrosh = new Monstre('Garrosh')
+const guldan = new Monstre('Guldan')
+const butcher = new Monstre('Butcher')
+const deathwing = new Monstre('Deathwing')
 
-// Add heroes and Monsters to array.
-let heroes = [hanzo, muradin, orphea, zeratul];
-const monsters = [monster1, monster2, monster3, monster4];
+// Add heroes and monsters to array.
+const heroes = [hanzo, muradin, orphea, qhira]
+const monsters = [garrosh, guldan, butcher, deathwing]
+
+hanzo.attackSpell(garrosh)
+garrosh.attack(hanzo)
+
+console.log(heroes, monsters)
 
 // Variable to insert into HTML.
-let htmlHeroes = "";
-let htmlMonster = "";
+let htmlHeroes = ''
+let htmlMonsters = ''
 
 for (const hero of heroes) {
-  htmlHeroes += styleCard.createCard(hero, "hero");
+  htmlHeroes += `<div class="hero-card">`;
+  htmlHeroes += `<img src="./public/img/${hero.name.toLowerCase()}.jpg" alt="${hero.name} portrait">`
+  htmlHeroes += `<div class="hero-name">${hero.name}</div>`
+  htmlHeroes += `<div class="hero-role">${hero.role}</div>`
+  htmlHeroes += `<div class="hero-hp">hp : ${hero.hp}</div>`
+  htmlHeroes += `<div class="hero-mana">mana : ${hero.mana}</div>`
+  htmlHeroes += `<div class="hero-atk">attack : ${hero.atk}</div>`
+  htmlHeroes += `<div class="hero-atk">attack spell : ${hero.atkSpell}</div>`
+  htmlHeroes += `<div class="hero-armor">armor : ${hero.armor}</div>`
+  htmlHeroes += `<div class="hero-armor">armor Spell : ${hero.armorSpell}</div>`
+  htmlHeroes += `<div class="hero-armor">level : ${hero.lvl}</div>`
+  htmlHeroes += `</div>`
 }
 
 for (const monster of monsters) {
-  htmlMonster += styleCard.createCard(monster, "monster");
+  htmlMonsters += `<div class="monster-card">`;
+  htmlMonsters += `<img src="./public/img/${monster.name.toLowerCase()}.jpg" alt="${monster.name} portrait">`
+  htmlMonsters += `<div class="monster-name">${monster.name}</div>`
+  htmlMonsters += `<div class="monster-role">${monster.role}</div>`
+  htmlMonsters += `<div class="monster-hp">hp : ${monster.hp}</div>`
+  htmlMonsters += `<div class="monster-mana">mana : ${monster.mana}</div>`
+  htmlMonsters += `<div class="monster-atk">attack : ${monster.atk}</div>`
+  htmlMonsters += `<div class="monster-atk">attack spell : ${monster.atkSpell}</div>`
+  htmlMonsters += `<div class="monster-armor">armor : ${monster.armor}</div>`
+  htmlMonsters += `<div class="monster-armor">armor Spell : ${monster.armorSpell}</div>`
+  htmlMonsters += `<div class="monster-armor">level : ${monster.lvl}</div>`
+  htmlMonsters += `</div>`
 }
 
-// Select Element.
-const heroesElem = document.querySelector("#heroes");
-const monsterElem = document.querySelector("#monsters");
+// Selector.
+const heroesElem = document.querySelector('#heroes')
+const monstersElem = document.querySelector('#monsters')
 
 // Insert heroes cards into HTML element.
-heroesElem.innerHTML = htmlHeroes;
-monsterElem.innerHTML = htmlMonster;
-
-// addEvent SElect HEro / submit Hero
-const submitHero = new SubmitHero();
-const game = new Game();
-
-const buttonChoice = document.querySelector("#buttonChoice");
-let listHeroes = document.querySelectorAll(".hero-card");
-
-listHeroes.forEach((elem) => {
-  elem.addEventListener("click", () => {
-    if (!submitHero.isLoading) {
-      submitHero.selectHero(heroes, elem.id);
-      buttonChoice.removeAttribute("disabled");
-    }
-  });
-});
-
-buttonChoice.addEventListener("click", () => {
-  buttonChoice.setAttribute("disabled", true);
-  submitHero.selectRandomMonster(monsters);
-});
+heroesElem.innerHTML = htmlHeroes
+monstersElem.innerHTML = htmlMonsters
