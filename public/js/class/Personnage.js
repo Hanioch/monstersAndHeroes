@@ -23,7 +23,7 @@ class Personnage {
   attackSpell(target) {
     target.hp = target.hp + this.armorSpell - this.atkSpell
     this.mana = this.mana - 25
-    console.log(this.name + ' attack ' + target.name + ' with ' + (this.atk - this.armor) + ' damage')
+    console.log(this.name + ' attack spell ' + target.name + ' with ' + (this.atkSpell - this.armorSpell) + ' damage')
   }
 
 }

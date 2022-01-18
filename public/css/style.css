@@ -31,8 +31,7 @@ section:first-of-type {
 }
 
 .hero-card,
-.monster-card,
-.in-game-card {
+.monster-card {
   width: 25%;
   border: 1px solid black;
   position: relative;
@@ -50,45 +49,23 @@ section:first-of-type {
 }
 
 .hero-card .hero-name,
-.monster-card .monster-name,
-.in-game-card .in-game-name {
+.monster-card .monster-name {
   text-align: center;
   text-transform: uppercase;
 }
 
-.inactive-hero::after,
-.inactive-monster::after {
-  content: "";
-  top: 0;
-  width: 100%;
-  border: 1px solid black;
+.hero-card.is-selected {
+  position: relative;
+}
+
+.hero-card.is-selected::after {
+  content: '';
   position: absolute;
-  overflow: hidden;
-  opacity: 0.5;
-  background-color: gray;
-  height: 100%;
-  transition: 0.5s;
-}
-
-.inactive-hero:hover::after {
-  opacity: 0;
-}
-
-.monster-card {
-  cursor: default;
+  inset: 0;
+  background-color: rgba(0, 0, 0, .25);
 }
 
 .bouton {
   margin-top: 20px;
-  width: 70px;
-  align-self: center;
-}
-
-.content {
-  display: flex;
-  flex-direction: column;
-}
-
-.invisible {
-  display: none;
+  padding: 5px 15px;
 }

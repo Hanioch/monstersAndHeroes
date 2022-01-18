@@ -4,6 +4,7 @@ import Assasin from "./class/Assasin.js"
 import Magician from "./class/Magician.js"
 import Warrior from "./class/Warrior.js"
 import Monstre from "./class/Monster.js"
+import Game from "./class/Game.js"
 
 // Create heroes.
 const hanzo = new Archer("Hanzo")
@@ -31,7 +32,7 @@ let htmlHeroes = ''
 let htmlMonsters = ''
 
 for (const hero of heroes) {
-  htmlHeroes += `<div class="hero-card">`;
+  htmlHeroes += `<div class="hero-card" data-hero="${hero.name}">`;
   htmlHeroes += `<img src="./public/img/${hero.name.toLowerCase()}.jpg" alt="${hero.name} portrait">`
   htmlHeroes += `<div class="hero-name">${hero.name}</div>`
   htmlHeroes += `<div class="hero-role">${hero.role}</div>`
@@ -63,7 +64,32 @@ for (const monster of monsters) {
 // Selector.
 const heroesElem = document.querySelector('#heroes')
 const monstersElem = document.querySelector('#monsters')
+const selectElem = document.querySelector('#buttonChoice')
 
 // Insert heroes cards into HTML element.
 heroesElem.innerHTML = htmlHeroes
 monstersElem.innerHTML = htmlMonsters
+
+const heroesCardsElem = document.querySelectorAll('#heroes .hero-card')
+console.log(heroesCardsElem)
+
+for (const heroCard of heroesCardsElem) {
+
+  heroCard.addEventListener('click', function(e) {
+
+    // Remove all 'is-selected' classes.
+    for (const item of heroesCardsElem) {
+      item.classList.remove('is-selected')
+    }
+
+    // Add 'is-selected' class.
+    this.classList.toggle('is-selected')
+    console.log(this);
+  })
+  
+}
+
+
+selectElem.addEventListener('click', function(e) {
+  new Game()
+})
