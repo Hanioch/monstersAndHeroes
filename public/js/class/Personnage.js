@@ -1,4 +1,6 @@
 class Personnage {
+  
+  // Constructor.
   constructor(name) {
     this.name = name;
     this.hp = 100;
@@ -10,12 +12,14 @@ class Personnage {
     this.lvl = 1;
   }
 
+  // Attack (basic) method.
   attack(target) {
     target.hp = target.hp + this.armor - this.atk
     this.mana = this.mana + 5
     console.log(this.name + ' attack ' + target.name + ' with ' + (this.atk - this.armor) + ' damage')
   }
 
+  // Attack (spell) method.
   attackSpell(target) {
     target.hp = target.hp + this.armorSpell - this.atkSpell
     this.mana = this.mana - 25

@@ -2,8 +2,7 @@ import Personnage from "./Personnage.js"
 
 class Warrior extends Personnage {
 
-    constructor(name)
-    {
+    constructor(name) {
         super(name)
         this.hp = this.hp * 1.5
         this.role = 'Warrior'
