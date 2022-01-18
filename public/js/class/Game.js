@@ -45,12 +45,12 @@ class Game {
   };
 
   doAtk = (typeATK, character, enemy) => {
-    console.log("ddd");
     const btnAtk = document.querySelector("#button-atk-hero");
     const btnAtkSpe = document.querySelector("#button-atk-spe-hero");
-    const hpHero = document.querySelector("#hpBar");
-    const manaHero = document.querySelector("#manaBar");
-    const manaHeroTotal = document.querySelector("#manaBar").dataset.manaMax;
+    const hpHero = document.querySelector("#game #hpBar");
+    const manaHero = document.querySelector("#game #manaBar");
+    const manaHeroTotal = document.querySelector("#game #manaBar").dataset.manamax;
+    const hpHeroTotal = document.querySelector("#game #hpBar").dataset.hpmax;
     if (this.isHeroTour) {
       const hpEnemy = document.querySelector("#hp-monster");
       let hpEnemyNumber = parseInt(hpEnemy.innerHTML);
@@ -79,6 +79,7 @@ class Game {
       hpEnemyNumber -= calculDamage <= 0 ? 1 : calculDamage;
       hpEnemy.innerHTML = hpEnemyNumber <= 0 ? 0 : hpEnemyNumber;
       console.log("Monstre: ", atkMonster, armorHero, calculDamage);
+      changeHp(character, hpEnemyNumber);
 
       if (hpEnemyNumber <= 0) {
         return this.gameFinished(character.name);
@@ -96,8 +97,18 @@ class Game {
       currentMana = parseInt(manaHero.innerHTML) + manaToAdd;
       var pourcent =  Math.floor(parseInt(currentMana) / parseInt(manaHeroTotal) *100);
       console.log(pourcent +" mana "+ currentMana);
-      manaHero.dataset.label = pourcent;
-      manaHero.innerHTML = currentMana
+      manaHero.innerHTML = currentMana;
+      manaHero.dataset.label = currentMana;
+      manaHero.value = pourcent;
+    }
+
+    function changeHp(perso, hp){
+      hpHero.innerHTML =  hp ;
+      var pourcent =  Math.floor(hp / parseInt(hpHeroTotal) *100);
+      console.log(pourcent +" hp "+ hp);
+
+      hpHero.dataset.label = hp;
+      hpHero.value = pourcent;
     }
   };
 
