@@ -68,4 +68,9 @@ section:first-of-type {
 .bouton {
   margin-top: 20px;
   padding: 5px 15px;
+  cursor: pointer;
+}
+
+.bouton[disabled] {
+  cursor: not-allowed;
 }

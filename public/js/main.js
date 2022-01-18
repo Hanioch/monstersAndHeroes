@@ -64,29 +64,28 @@ for (const monster of monsters) {
 // Selector.
 const heroesElem = document.querySelector('#heroes')
 const monstersElem = document.querySelector('#monsters')
-const selectElem = document.querySelector('#buttonChoice')
 
 // Insert heroes cards into HTML element.
 heroesElem.innerHTML = htmlHeroes
 monstersElem.innerHTML = htmlMonsters
 
 const heroesCardsElem = document.querySelectorAll('#heroes .hero-card')
-console.log(heroesCardsElem)
+const selectElem = document.querySelector('#buttonChoice')
 
+// For all Heroes Cards.
 for (const heroCard of heroesCardsElem) {
-
+  // On Hero Card click.
   heroCard.addEventListener('click', function(e) {
 
-    // Remove all 'is-selected' classes.
     for (const item of heroesCardsElem) {
+      // Remove all 'is-selected' classes.
       item.classList.remove('is-selected')
     }
-
     // Add 'is-selected' class.
     this.classList.toggle('is-selected')
-    console.log(this);
+    // Enable select button.
+    selectElem.removeAttribute('disabled')
   })
-  
 }
 
 
