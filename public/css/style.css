@@ -92,3 +92,24 @@ section:first-of-type {
 .invisible {
   display: none;
 }
+
+#hpBar{
+  background-color: green ;
+}
+.bar{
+  display : block;
+}
+progress{
+  width: 100%;
+  text-align: center;
+}
+progress:before {
+  content: attr(data-label);
+  font-size: 0.8em;
+  vertical-align: 0;
+  
+  /*Position text over the progress bar */
+  position:absolute;
+  left:0;
+  right:0;
+}

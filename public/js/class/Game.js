@@ -48,6 +48,9 @@ class Game {
     console.log("ddd");
     const btnAtk = document.querySelector("#button-atk-hero");
     const btnAtkSpe = document.querySelector("#button-atk-spe-hero");
+    const hpHero = document.querySelector("#hpBar");
+    const manaHero = document.querySelector("#manaBar");
+    const manaHeroTotal = document.querySelector("#manaBar").dataset.manaMax;
     if (this.isHeroTour) {
       const hpEnemy = document.querySelector("#hp-monster");
       let hpEnemyNumber = parseInt(hpEnemy.innerHTML);
@@ -59,7 +62,9 @@ class Game {
       console.log("hero: ", atkHero, armorMonster, calculDamage);
       btnAtk.setAttribute("disabled", true);
       btnAtkSpe.setAttribute("disabled", true);
-
+      //attaquer une fois ajoute 5 pts de mana, utiliser une attaque spe coute 25 pts de mana
+      typeATK === "atk" ? changeMana(true) : changeMana(false);
+      
       this.isHeroTour = !this.isHeroTour;
       if (hpEnemyNumber <= 0) {
         return this.gameFinished(character.name);
@@ -82,6 +87,17 @@ class Game {
       btnAtk.removeAttribute("disabled");
       btnAtkSpe.removeAttribute("disabled");
       this.isHeroTour = !this.isHeroTour;
+    }
+    
+    function changeMana(addMana){
+      //probleme, le mana est toujours a 50 !! verifier les class.
+      var manaToAdd = addMana ? 5 : -25;
+      var currentMana = manaHero.innerHTML;
+      currentMana = parseInt(manaHero.innerHTML) + manaToAdd;
+      var pourcent =  Math.floor(parseInt(currentMana) / parseInt(manaHeroTotal) *100);
+      console.log(pourcent +" mana "+ currentMana);
+      manaHero.dataset.label = pourcent;
+      manaHero.innerHTML = currentMana
     }
   };
 

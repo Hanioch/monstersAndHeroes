@@ -6,6 +6,8 @@ class StyleCard {
     let html = "";
 
     html += `<div class="${type}-card inactive-${type}" id="${name}">`;
+    html += `<div class="bar"><progress id="hpBar" max="100" value="100" data-label="${hp}"> ${hp} </progress><br>`;
+    html += `<progress id="manaBar" max="100" value="100" data-label="${mana}" data-manaMax="${mana}"> ${mana} </progress></div>`;
     html += `<img src="./public/img/${name.toLowerCase()}.jpg" alt="${name} portrait">`;
     html += `<div class="${type}-name">${name}</div>`;
     html += `<div class="hero-role">${role}</div>`;
@@ -52,7 +54,9 @@ class StyleCard {
     hpValue.setAttribute("id", `hp-${type}`);
 
     hpValue.innerHTML = character.hp;
-    titleHp.innerHTML = `HP : `;
+    //titleHp.innerHTML = `HP : `;
+    //document.querySelector(".bar").style.display = 'block';    
+
     titleHp.appendChild(hpValue);
     divBtn.appendChild(btnAtk);
     divBtn.appendChild(btnAtkSpe);
