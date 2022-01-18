@@ -14,6 +14,13 @@ class Game {
 
     console.log('player 1 is : ' + player1.name)
     console.log('player 2 is : ' + player2.name)
+
+    // Attack test.
+    player1.attackSpell(player2)
+    player2.attack(player1)
+
+    console.log(player1)
+    console.log(player2)
     
   }
 
