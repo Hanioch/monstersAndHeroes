@@ -21,10 +21,6 @@ const deathwing = new Monstre('Deathwing')
 // Add heroes and monsters to array.
 const heroes = [hanzo, muradin, orphea, qhira]
 const monsters = [garrosh, guldan, butcher, deathwing]
-
-// hanzo.attackSpell(garrosh)
-// garrosh.attack(hanzo)
-
 console.log(heroes, monsters)
 
 // Variable to insert into HTML.

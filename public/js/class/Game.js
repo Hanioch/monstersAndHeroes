@@ -15,6 +15,9 @@ class Game {
     console.log('player 1 is : ' + player1.name)
     console.log('player 2 is : ' + player2.name)
 
+    // DISPLAY NONE MAIN SECTION (players selection).
+    // COPY SELECTED HEROES CARDS AND INSERT INTO NEW HTML SECTION.
+
     // Attack test.
     player1.attackSpell(player2)
     player2.attack(player1)
