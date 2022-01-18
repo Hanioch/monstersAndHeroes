@@ -22,8 +22,8 @@ const deathwing = new Monstre('Deathwing')
 const heroes = [hanzo, muradin, orphea, qhira]
 const monsters = [garrosh, guldan, butcher, deathwing]
 
-hanzo.attackSpell(garrosh)
-garrosh.attack(hanzo)
+// hanzo.attackSpell(garrosh)
+// garrosh.attack(hanzo)
 
 console.log(heroes, monsters)
 
@@ -32,7 +32,7 @@ let htmlHeroes = ''
 let htmlMonsters = ''
 
 for (const hero of heroes) {
-  htmlHeroes += `<div class="hero-card" data-hero="${hero.name}">`;
+  htmlHeroes += `<div class="hero-card" data-player="${hero.name}">`;
   htmlHeroes += `<img src="./public/img/${hero.name.toLowerCase()}.jpg" alt="${hero.name} portrait">`
   htmlHeroes += `<div class="hero-name">${hero.name}</div>`
   htmlHeroes += `<div class="hero-role">${hero.role}</div>`
@@ -47,7 +47,7 @@ for (const hero of heroes) {
 }
 
 for (const monster of monsters) {
-  htmlMonsters += `<div class="monster-card">`;
+  htmlMonsters += `<div class="monster-card" data-player="${monster.name}">`;
   htmlMonsters += `<img src="./public/img/${monster.name.toLowerCase()}.jpg" alt="${monster.name} portrait">`
   htmlMonsters += `<div class="monster-name">${monster.name}</div>`
   htmlMonsters += `<div class="monster-role">${monster.role}</div>`
@@ -100,5 +100,9 @@ selectElem.addEventListener('click', function(e) {
   game.monsterSelection()
   // Get selected players.
   const playersSelected = document.querySelectorAll('.is-selected')
-  console.log(playersSelected)
+  // Set players.
+  const player1 = heroes.find(hero => hero.name === playersSelected[0].dataset.player)
+  const player2 = monsters.find(monster => monster.name === playersSelected[1].dataset.player)
+  // Initiate GAME with players.
+  game.gameInitiate(player1, player2)
 })
