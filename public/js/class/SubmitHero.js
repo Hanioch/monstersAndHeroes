@@ -33,11 +33,11 @@ class SubmitHero {
       // this.isLoading = false;
       const game = new Game();
       game.lunchGame(this.monsterSelected, heroFinal);
-    }, 1500);
+    }, 5000);
 
     let interval = setInterval(() => {
       this.giveRandomMonster(monsters);
-    }, 30);
+    }, 350);
   };
 
   giveRandomMonster = (monsters) => {
