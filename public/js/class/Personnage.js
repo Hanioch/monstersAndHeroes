@@ -15,19 +15,19 @@ class Personnage {
   // Attack (basic) method.
   attack(target) {
     // Attack.
-    target.hp = target.hp + this.armor - this.atk
+    target.hp = target.hp + target.armor - this.atk
     // Gain mana.
     this.mana = this.mana + 5
-    console.log(this.name + ' attack ' + target.name + ' with ' + (this.atk - this.armor) + ' damage')
+    console.log(this.name + ' attack ' + target.name + ' with ' + (this.atk - target.armor) + ' damage')
   }
 
   // Attack (spell) method.
   attackSpell(target) {
     // Attack.
-    target.hp = target.hp + this.armorSpell - this.atkSpell
+    target.hp = target.hp + target.armorSpell - this.atkSpell
     // Reduce Mana.
     this.mana = this.mana - 25
-    console.log(this.name + ' attack spell ' + target.name + ' with ' + (this.atkSpell - this.armorSpell) + ' damage')
+    console.log(this.name + ' attack spell ' + target.name + ' with ' + (this.atkSpell - target.armorSpell) + ' damage')
   }
 
 }

@@ -19,9 +19,7 @@ header {
   position: relative;
 }
 
-section:first-of-type {
-  margin-top: 20px;
-}
+/* GAME - Selection */
 
 #heroes,
 #monsters {
@@ -30,8 +28,8 @@ section:first-of-type {
   gap: 20px;
 }
 
-.hero-card,
-.monster-card {
+.hero-card-container,
+.monster-card-container {
   width: 25%;
   border: 1px solid black;
   position: relative;
@@ -54,13 +52,13 @@ section:first-of-type {
   text-transform: uppercase;
 }
 
-.hero-card.is-selected,
-.monster-card.is-selected {
+.hero-card-container.is-selected,
+.monster-card-container.is-selected {
   position: relative;
 }
 
-.hero-card.is-selected::after,
-.monster-card.is-selected::after {
+.hero-card-container.is-selected::after,
+.monster-card-container.is-selected::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -75,4 +73,15 @@ section:first-of-type {
 
 .bouton[disabled] {
   cursor: not-allowed;
+}
+
+/* GAME - VERSUS */
+
+#versus-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.atk-container {
+  display: block;
 }

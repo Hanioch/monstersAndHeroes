@@ -23,57 +23,54 @@ const heroes = [hanzo, muradin, orphea, qhira]
 const monsters = [garrosh, guldan, butcher, deathwing]
 console.log(heroes, monsters)
 
-// Variable to insert into HTML.
-let htmlHeroes = ''
-let htmlMonsters = ''
-
-for (const hero of heroes) {
-  htmlHeroes += `<div class="hero-card" data-player="${hero.name}">`;
-  htmlHeroes += `<img src="./public/img/${hero.name.toLowerCase()}.jpg" alt="${hero.name} portrait">`
-  htmlHeroes += `<div class="hero-name">${hero.name}</div>`
-  htmlHeroes += `<div class="hero-role">${hero.role}</div>`
-  htmlHeroes += `<div class="hero-hp">hp : ${hero.hp}</div>`
-  htmlHeroes += `<div class="hero-mana">mana : ${hero.mana}</div>`
-  htmlHeroes += `<div class="hero-atk">attack : ${hero.atk}</div>`
-  htmlHeroes += `<div class="hero-atk">attack spell : ${hero.atkSpell}</div>`
-  htmlHeroes += `<div class="hero-armor">armor : ${hero.armor}</div>`
-  htmlHeroes += `<div class="hero-armor">armor Spell : ${hero.armorSpell}</div>`
-  htmlHeroes += `<div class="hero-armor">level : ${hero.lvl}</div>`
-  htmlHeroes += `</div>`
+/**
+ * Function - Create HTML cards.
+ * @param {Array} heroesObjArray - Array of Objects.
+ * @param {String} type
+ * @returns 
+ */
+function cardHtml(heroesObjArray, type) {
+  let html = ''
+  for (const hero of heroesObjArray) {
+    html += `<div class="${type}-card-container" data-player="${hero.name}">`
+    html += `<div class="${type}-card">`
+    html += `<img src="./public/img/${hero.name.toLowerCase()}.jpg" alt="${hero.name} portrait">`
+    html += `<div class="${type}-name">${hero.name}</div>`
+    html += `<div class="${type}-role">${hero.role}</div>`
+    html += `<div class="${type}-hp">hp : ${hero.hp}</div>`
+    html += `<div class="${type}-mana">mana : ${hero.mana}</div>`
+    html += `<div class="${type}-atk">attack : ${hero.atk}</div>`
+    html += `<div class="${type}-atk">attack spell : ${hero.atkSpell}</div>`
+    html += `<div class="${type}-armor">armor : ${hero.armor}</div>`
+    html += `<div class="${type}-armor">armor Spell : ${hero.armorSpell}</div>`
+    html += `<div class="${type}-armor">level : ${hero.lvl}</div>`
+    html += `</div>`
+    html += `<div class="btns-container"></div>`
+    html += `</div>`
+  }
+  return html
 }
 
-for (const monster of monsters) {
-  htmlMonsters += `<div class="monster-card" data-player="${monster.name}">`;
-  htmlMonsters += `<img src="./public/img/${monster.name.toLowerCase()}.jpg" alt="${monster.name} portrait">`
-  htmlMonsters += `<div class="monster-name">${monster.name}</div>`
-  htmlMonsters += `<div class="monster-role">${monster.role}</div>`
-  htmlMonsters += `<div class="monster-hp">hp : ${monster.hp}</div>`
-  htmlMonsters += `<div class="monster-mana">mana : ${monster.mana}</div>`
-  htmlMonsters += `<div class="monster-atk">attack : ${monster.atk}</div>`
-  htmlMonsters += `<div class="monster-atk">attack spell : ${monster.atkSpell}</div>`
-  htmlMonsters += `<div class="monster-armor">armor : ${monster.armor}</div>`
-  htmlMonsters += `<div class="monster-armor">armor Spell : ${monster.armorSpell}</div>`
-  htmlMonsters += `<div class="monster-armor">level : ${monster.lvl}</div>`
-  htmlMonsters += `</div>`
-}
+// Create HTML Cards.
+const heroesCards = cardHtml(heroes, 'hero')
+const monstersCards = cardHtml(monsters, 'monster')
 
-// Selector.
+// Selectors.
 const heroesElem = document.querySelector('#heroes')
 const monstersElem = document.querySelector('#monsters')
 
 // Insert heroes cards into HTML element.
-heroesElem.innerHTML = htmlHeroes
-monstersElem.innerHTML = htmlMonsters
+heroesElem.innerHTML = heroesCards
+monstersElem.innerHTML = monstersCards
 
-const heroesCardsElem = document.querySelectorAll('#heroes .hero-card')
+// Selectors.
+const heroesCardsElem = document.querySelectorAll('#heroes .hero-card-container')
 const selectElem = document.querySelector('#buttonChoice')
-
 
 // For all Heroes Cards.
 for (const heroCard of heroesCardsElem) {
   // On Hero Card click.
-  heroCard.addEventListener('click', function(e) {
-
+  heroCard.addEventListener('click', function() {
     for (const item of heroesCardsElem) {
       // Remove all 'is-selected' classes.
       item.classList.remove('is-selected')
@@ -85,8 +82,9 @@ for (const heroCard of heroesCardsElem) {
   })
 }
 
-
+// On select click button.
 selectElem.addEventListener('click', function(e) {
+
   // Disable Select button once game is started.
   this.setAttribute('disabled', '')
 
@@ -101,4 +99,5 @@ selectElem.addEventListener('click', function(e) {
   const player2 = monsters.find(monster => monster.name === playersSelected[1].dataset.player)
   // Initiate GAME with players.
   game.gameInitiate(player1, player2)
+
 })
